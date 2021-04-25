@@ -1,24 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react'
+import { Container, Row, Col } from 'react-bootstrap'
+import { SearchResult } from './interfaces';
+import Navigation from './Navigation';
+import Result from './Result';
+import Search from './Search';
 import './App.css';
+import logo2 from './images/logo2.png'
 
-function App() {
+const App = () => {
+  const [result, setResult] = useState<Array<SearchResult>>();
+
+  let content = 
+    <div>
+      <br /><br />
+      <Row className='justify-content-md-center'>
+        <img src={logo2} alt='logo' className='logo'/>
+      </Row>
+      <Row className='justify-content-md-center'>
+        <Col>
+        <Search setResult = {setResult} />
+        </Col>
+      </Row> 
+    </div>
+  
+  if (result !== undefined) {
+    content = 
+      <div>
+        <Result result = { result } />
+      </div>
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navigation setResult = { setResult } />
+      <Container fluid="lg">
+        { content }
+      </Container>
     </div>
   );
 }
