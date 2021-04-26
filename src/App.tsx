@@ -1,42 +1,27 @@
-import React, { useState } from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
+import { useState } from 'react';
+import { Container } from 'react-bootstrap';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { SearchResult } from './interfaces';
 import Navigation from './Navigation';
 import Result from './Result';
-import Search from './Search';
 import './App.css';
-import logo2 from './images/logo2.png'
+import Main from './Main';
 
 const App = () => {
-  const [result, setResult] = useState<Array<SearchResult>>();
-
-  let content = 
-    <div>
-      <br /><br />
-      <Row className='justify-content-md-center'>
-        <img src={logo2} alt='logo' className='logo'/>
-      </Row>
-      <Row className='justify-content-md-center'>
-        <Col>
-        <Search setResult = {setResult} />
-        </Col>
-      </Row> 
-    </div>
-  
-  if (result !== undefined) {
-    content = 
-      <div>
-        <Result result = { result } />
-      </div>
-  }
+  const [result, setResult] = useState<Array<SearchResult>>([]);
 
   return (
-    <div>
-      <Navigation setResult = { setResult } />
+    <BrowserRouter>
+      <Navigation />
       <Container fluid="lg">
-        { content }
+        <Route exact path = '/' render = {
+          () => <Main setResult = { setResult } />
+        } />
+        <Route path='/search' render = {
+          () => <Result result = { result } />
+        }/>
       </Container>
-    </div>
+    </BrowserRouter>
   );
 }
 

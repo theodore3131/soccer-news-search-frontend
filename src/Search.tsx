@@ -1,9 +1,11 @@
 import React, { KeyboardEvent, useState } from 'react'
 import { Form, Button, Row, Col } from 'react-bootstrap'
+import { useHistory } from 'react-router-dom';
 import { searchProps, SearchResult } from './interfaces';
 
 
 const Search = (props: searchProps) => {
+  const history = useHistory();
   const [query, setQuery] = useState("");
   
   const handelInputChanges = (e : React.ChangeEvent<HTMLInputElement>) => {
@@ -24,9 +26,9 @@ const Search = (props: searchProps) => {
       .then(response => response.json())
       .then(data => {
           const documents = data["res"];
-          console.log(documents)
-          const results = documents as SearchResult[]
+          const results = documents as SearchResult[];
           props.setResult(results);
+          history.push(`/search?q=${ query }`);
       });
   }
 

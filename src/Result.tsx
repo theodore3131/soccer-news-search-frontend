@@ -57,7 +57,9 @@ const Result = (props: resultProps) => {
             <Card key={ele.id}>
               <Row>
                 <Col md={1}>
-                  <Card.Img src={ele.image_src} className='image' />
+                  <a href={ele.address}>
+                    <Card.Img src={ele.image_src} className='image' />
+                  </a>
                 </Col>
                 <Col>
                   <Card.Header as="h5">
