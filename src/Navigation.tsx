@@ -7,7 +7,7 @@ const Navigation = () => {
 
   return (
     <Navbar bg="dark" variant="dark">
-      <Navbar.Brand onClick = { returnToMain }>Soccer News</Navbar.Brand>
+      <Navbar.Brand onClick = { returnToMain }>Soccer ⚽ News</Navbar.Brand>
     </Navbar>
   )
 }

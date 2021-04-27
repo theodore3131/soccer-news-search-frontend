@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import { Row, Col, Card, Pagination } from 'react-bootstrap'
-import { resultProps } from './interfaces'
+import { useState } from 'react';
+import { Row, Col, Card, Pagination } from 'react-bootstrap';
+import { resultProps } from './interfaces';
 
 const PAGE_SIZE = 15;
 
@@ -57,13 +57,23 @@ const Result = (props: resultProps) => {
             <Card key={ele.id}>
               <Row>
                 <Col md={1}>
-                  <a href={ele.address}>
+                  <a
+                    rel="noreferrer" 
+                    href={ele.address}
+                    target="_blank"
+                  >
                     <Card.Img src={ele.image_src} className='image' />
                   </a>
                 </Col>
                 <Col>
                   <Card.Header as="h5">
-                  <a href={ele.address}>{ele.title}</a>
+                  <a 
+                    rel="noreferrer"
+                    href={ele.address}
+                    target="_blank"
+                  >
+                      {ele.title}
+                  </a>
                   <span className='timestamp'>{ele.timestamp}</span>
                   </Card.Header>
                   <Card.Body>

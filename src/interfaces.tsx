@@ -5,6 +5,7 @@ export interface SearchResult {
   timestamp: string;
   snippet: string;
   image_src: string;
+  // highlight: string;
 };
 
 export interface searchProps {
